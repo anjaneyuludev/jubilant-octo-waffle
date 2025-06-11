@@ -21,16 +21,16 @@ class BST:
             node.right = self._insert(node.right, key)
         return node
 
-    # In-order Traversal (Left, Root, Right)
-    def inorder(self):
-        self._inorder(self.root)
+    # Postorder Traversal (Left, Right, Root)
+    def postorder(self):
+        self._postorder(self.root)
         print()
 
-    def _inorder(self, node):
+    def _postorder(self, node):
         if node:
-            self._inorder(node.left)
+            self._postorder(node.left)
+            self._postorder(node.right)
             print(node.key, end=' ')
-            self._inorder(node.right)
 
     # Search for a value
     def search(self, key):
@@ -85,19 +85,19 @@ if __name__ == "__main__":
     bst.insert(60)
     bst.insert(80)
 
-    print("Inorder traversal of BST:")
-    bst.inorder()
+    print("Postorder traversal of BST:")
+    bst.postorder()
 
     print("Search for 40:", "Found" if bst.search(40) else "Not Found")
 
     print("Deleting 20")
     bst.delete(20)
-    bst.inorder()
+    bst.postorder()
 
     print("Deleting 30")
     bst.delete(30)
-    bst.inorder()
+    bst.postorder()
 
     print("Deleting 50")
     bst.delete(50)
-    bst.inorder()
+    bst.postorder()
